@@ -22,3 +22,10 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 /InjectionDep/target/
+/mavenproject1/target/
+/mavenproject2/target/
+/webAppNotSpring/target/
+/BeansMethodes/target/
+/BeanMethodes_2/target/
+/Beansmethode_3/target/
+/BeansMethodes_2_1/target/
