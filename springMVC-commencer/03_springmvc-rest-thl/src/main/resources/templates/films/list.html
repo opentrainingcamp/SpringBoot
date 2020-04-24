@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Library - Available Films</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>
+        <h1>Available Films</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Directeur</th>
+                    <th>Author</th>
+                    <th>IMDb</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="film : ${films}">
+                    <td th:text="${film.title}">Title</td>
+                    <td th:text="${film.directeur}">Directeur</td>
+                    <td th:text="${film.authors}">Authors</td>
+                    <td>Interne: <a th:href="@{/films(imdb=${film.imdb})}" th:text="${film.imdb}" href="#">IMDb</a></td>
+                    <td>sur IMDb.com <a th:href="@{https://www.imdb.com/title/{imdb}(imdb=${film.imdb})}" th:text="${film.imdb}" href="#">IMDb</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

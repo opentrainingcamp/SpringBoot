@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Library - Available Books</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <div th:if="${film != null}">
+        <div>
+            <div th:text="${film.title}">Title</div>
+            <div th:text="${film.directeur}">authors</div>
+            <div th:text="${film.authors}">authors</div>
+            <div th:text="${film.imdb}">IMDb</div>
+        </div>
+    </div>
+
+    <div th:if="${film} == null">
+        <h1 th:text="'No film found with IMDb: ' + ${param.imdb}">Not Found</h1>
+    </div>
+
+</body>
+</html>
