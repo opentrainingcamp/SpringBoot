@@ -16,9 +16,9 @@ public class BasicApplication {
     public static void main(String[] args) {
         var ctx = SpringApplication.run(BasicApplication.class, args);
         var lt = ctx.getBean(LanceurDeTache.class);
-        System.out.print("Fact 5:");
+        System.out.print("Fact 5: ");
         lt.afficherResultat("!", (long) 5);
-        System.out.print("2 + 4");
+        System.out.print("2 + 4 = ");
         lt.afficherResultat("somme", (Integer) 2, (Integer) 4);
     }
 

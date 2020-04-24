@@ -5,21 +5,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
 /**
  * Créeation de Beans a partir d'annotoation Component et contructeur unique
+ *
  * @author Pascal Fares
  */
 @SpringBootApplication
 public class BasicApplication {
 
-	public static void main(String[] args) {
-		var ctx =  SpringApplication.run(BasicApplication.class, args);
-                var lt = ctx.getBean(LanceurDeTache.class);
-                System.out.print("Fact 5:");
-                lt.afficherResultat("!", (long) 5);
-                System.out.print("2 + 4");
-                lt.afficherResultat("somme", (Integer) 2, (Integer) 4);
-	}
-        
+    public static void main(String[] args) {
+        var ctx = SpringApplication.run(BasicApplication.class, args);
+        var lt = ctx.getBean(LanceurDeTache.class);
+        System.out.print("Fact 5:");
+        lt.afficherResultat("!", (long) 5);
+        System.out.print("2 + 4");
+        lt.afficherResultat("somme", (Integer) 2, (Integer) 4);
+    }
 
 }

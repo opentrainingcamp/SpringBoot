@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.taches;
 
 import com.example.Tache;
-import static java.lang.Integer.sum;
-import java.util.Arrays;
 import org.springframework.stereotype.Component;
 
 /**
