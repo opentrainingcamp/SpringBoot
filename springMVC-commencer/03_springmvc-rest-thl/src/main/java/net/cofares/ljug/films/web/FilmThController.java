@@ -1,8 +1,6 @@
 package net.cofares.ljug.films.web;
 
 import net.cofares.ljug.films.Film;
-import net.cofares.ljug.films.Film;
-import net.cofares.ljug.films.FilmService;
 import net.cofares.ljug.films.FilmService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,8 +30,4 @@ public class FilmThController {
         return "films/details";
     }
 
-    @PostMapping("/films")
-    public Film create(@ModelAttribute Film film) {
-        return filmService.create(film);
-    }
 }

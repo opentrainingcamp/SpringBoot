@@ -45,7 +45,6 @@ public class FilmControllerTest {
     }
 
     @Test
-    @Ignore
     public void shouldReturn404WhenBookNotFound() throws Exception {
 
         when(filmService.find(anyString())).thenReturn(Optional.empty());
@@ -54,6 +53,17 @@ public class FilmControllerTest {
             .andExpect(status().isOk())
             .andExpect(view().name("films/details"))
             .andExpect(model().attributeDoesNotExist("film"));
+    }
+    
+    @Test
+    public void shouldReturn200WhenBookFound() throws Exception {
+
+        when(filmService.find("123")).thenReturn(Optional.of(new Film("123", "Cours C2", "Pascal Fares", "Auditeurs")));
+
+        mockMvc.perform(get("/films").param("imdb", "123"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("films/details"))
+            .andExpect(model().attributeExists("film"));
     }
 
     

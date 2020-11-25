@@ -8,14 +8,11 @@
 
 	<name>spring-mvc-thymeleaf</name>
 	<description>Recipe showing the use of Exposing REST resources with Spring MVC</description>
-
-	<parent>
-		<groupId>net.cofares.ljug</groupId>
-		<artifactId>spring-boot-2-ljug-parent</artifactId>
-		<version>2.2.6-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-
+       <parent>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>2.2.6.RELEASE</version>
+        </parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

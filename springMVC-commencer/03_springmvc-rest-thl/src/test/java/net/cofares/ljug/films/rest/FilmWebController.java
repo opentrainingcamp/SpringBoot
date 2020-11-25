@@ -42,7 +42,7 @@ public class FilmWebController {
         when(filmService.findAll()).thenReturn(Arrays.asList(new Film("123", "Cours C2", "Pascal Fares", "Auditeurs"),
             new Film("321", "Cours C1", "Pascal E Fares", "Auditeur 1", "Auditeur 2")));
 
-        mockMvc.perform(get("/restfilms"))
+        mockMvc.perform(get("/api/films"))
             .andExpect(status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)))
             .andExpect(MockMvcResultMatchers.jsonPath("$[*].imdb", Matchers.containsInAnyOrder("123", "321")))
@@ -55,7 +55,7 @@ public class FilmWebController {
 
         when(filmService.find(anyString())).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/restfilms/123"))
+        mockMvc.perform(get("/api/film/123"))
             .andExpect(status().isNotFound());
     }
 
@@ -75,7 +75,7 @@ public class FilmWebController {
 
         when(filmService.create(any(Film.class))).thenReturn(new Film("123456789", "Test Film enregitré", "Pascal Fares", "Pascal et Fares"));
 
-        mockMvc.perform(post("/restfilms")
+        mockMvc.perform(post("/api/film")
             .contentType(MediaType.APPLICATION_JSON)
             .content("{ \"imdb\" : \"123456789\"}, \"title\" : \"Test Film enregitré\", \"directeur\" : \"Pascal Fares\",\"authors\" : [\"Pascal et Fares\"]"))
             .andExpect(status().isCreated())

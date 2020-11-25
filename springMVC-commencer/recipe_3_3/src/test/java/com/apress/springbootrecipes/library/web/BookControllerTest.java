@@ -23,47 +23,47 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(BookController.class)
 public class BookControllerTest {
 
-	@Autowired
-	private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-	@MockBean
-	private BookService bookService;
+    @MockBean
+    private BookService bookService;
 
-	@Test
-	public void shouldReturnListOfBooks() throws Exception {
+    @Test
+    public void shouldReturnListOfBooks() throws Exception {
 
-		when(bookService.findAll()).thenReturn(Arrays.asList(
-						new Book("123", "Spring 5 Recipes", "Marten Deinum", "Josh Long"),
-						new Book("321", "Pro Spring MVC", "Marten Deinum", "Colin Yates")));
+        when(bookService.findAll()).thenReturn(Arrays.asList(
+            new Book("123", "Spring 5 Recipes", "Marten Deinum", "Josh Long"),
+            new Book("321", "Pro Spring MVC", "Marten Deinum", "Colin Yates")));
 
-		mockMvc.perform(get("/books.html"))
-						.andExpect(status().isOk())
-						.andExpect(view().name("books/list"))
-						.andExpect(model().attribute("books", Matchers.hasSize(2)));
-	}
+        mockMvc.perform(get("/books.html"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("books/list"))
+            .andExpect(model().attribute("books", Matchers.hasSize(2)));
+    }
 
-	@Test
-	public void shouldReturnNoBookWhenNotFound() throws Exception {
+    @Test
+    public void shouldReturnNoBookWhenNotFound() throws Exception {
 
-		when(bookService.find(anyString())).thenReturn(Optional.empty());
+        when(bookService.find(anyString())).thenReturn(Optional.empty());
 
-		mockMvc.perform(get("/books.html").param("isbn", "123"))
-						.andExpect(status().isOk())
-						.andExpect(view().name("books/details"))
-						.andExpect(model().attributeDoesNotExist("book"));
-	}
+        mockMvc.perform(get("/books.html").param("isbn", "123"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("books/details"))
+            .andExpect(model().attributeDoesNotExist("book"));
+    }
 
-	@Test
-	public void shouldReturnBookWhenFound() throws Exception {
+    @Test
+    public void shouldReturnBookWhenFound() throws Exception {
 
-		Book book = new Book("123", "Spring 5 Recipes", "Marten Deinum", "Josh Long");
-		when(bookService.find(anyString())).thenReturn(
-						Optional.of(book));
+        Book book = new Book("123", "Spring 5 Recipes", "Marten Deinum", "Josh Long");
+        when(bookService.find(anyString())).thenReturn(
+            Optional.of(book));
 
-		mockMvc.perform(get("/books.html").param("isbn", "123"))
-						.andExpect(status().isOk())
-						.andExpect(view().name("books/details"))
-						.andExpect(model().attribute("book", Matchers.is(book)));
-	}
+        mockMvc.perform(get("/books.html").param("isbn", "123"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("books/details"))
+            .andExpect(model().attribute("book", Matchers.is(book)));
+    }
 
 }

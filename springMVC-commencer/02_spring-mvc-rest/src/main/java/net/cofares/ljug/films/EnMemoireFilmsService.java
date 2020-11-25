@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+//@Component
 @Service
 class EnMemoireFilmsService implements FilmService {
 
@@ -26,4 +27,6 @@ class EnMemoireFilmsService implements FilmService {
 	public Optional<Film> find(String imdb) {
 		return Optional.ofNullable(films.get(imdb));
 	}
+        
+        //public Film find (String imdb) {
 }

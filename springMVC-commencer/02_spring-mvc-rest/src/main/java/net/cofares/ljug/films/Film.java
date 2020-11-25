@@ -11,7 +11,7 @@ public class Film {
 
     public Film() {
     }
-
+    // new Film("tt0011.."", "mon film", "Moi et vous", "aut1", "aut2", "aut3")
     public Film(String imdb, String title, String directeur, String... authors) {
         this.imdb = imdb;
         this.title = title;

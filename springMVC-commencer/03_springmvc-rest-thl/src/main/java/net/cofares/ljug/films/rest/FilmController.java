@@ -9,7 +9,7 @@ import java.net.URI;
 import net.cofares.ljug.films.FilmService;
 
 @RestController
-@RequestMapping("/restfilms")
+@RequestMapping("/api")
 public class FilmController {
 
     private final FilmService filmService;
@@ -19,12 +19,12 @@ public class FilmController {
         this.filmService = filmService;
     }
 
-    @GetMapping
+    @GetMapping("/films")
     public Iterable<Film> all() {
         return filmService.findAll();
     }
 
-    @GetMapping("/{imdb}")
+    @GetMapping("/film/{imdb}")
     public ResponseEntity<Film> get(@PathVariable("imdb") String imdb) {
         return filmService.find(imdb)
             .map(ResponseEntity::ok)
@@ -32,11 +32,11 @@ public class FilmController {
 
     }
 
-    @PostMapping
+    @PostMapping("/film")
     public ResponseEntity<Film> create(@RequestBody Film film,
         UriComponentsBuilder uriBuilder) {
         Film created = filmService.create(film);
-        URI newBookUri = uriBuilder.path("/films/{imdb}").build(created.getImdb());
+        URI newBookUri = uriBuilder.path("/api/film/{imdb}").build(created.getImdb());
         return ResponseEntity
             .created(newBookUri)
             .body(created);
