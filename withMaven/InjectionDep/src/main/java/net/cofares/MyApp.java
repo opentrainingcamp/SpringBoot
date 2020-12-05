@@ -18,8 +18,8 @@ public class MyApp {
     @Autowired
     BComponentIntf b;
     
-    public void uneMeth() {
-        System.out.printf("Dans Demo App appel d'un bean %s", b.uneMeth());
+    public String uneMeth() {
+        return String.format("Dans Demo App appel d'un bean %s", b.uneMeth());
     }
 
 }
