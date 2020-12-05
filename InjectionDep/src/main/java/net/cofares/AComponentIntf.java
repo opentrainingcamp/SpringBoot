@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example;
+package net.cofares;
 
 /**
  *
  * @author Acer
  */
-public interface IClasse {
-    public void affiche();
+interface AComponentIntf {
+    public String getData();
+    public void setData(String data);   
 }

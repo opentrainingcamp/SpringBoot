@@ -1,4 +1,4 @@
-package com.example;
+package net.cofares;
 
 import java.util.Arrays;
 import org.springframework.boot.SpringApplication;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.example;
+package net.cofares;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +19,7 @@ public class MyApp {
     BComponentIntf b;
     
     public void uneMeth() {
-        System.out.printf("Dans DemoApp appel d'un bean %s", b.uneMeth());
+        System.out.printf("Dans Demo App appel d'un bean %s", b.uneMeth());
     }
 
 }
