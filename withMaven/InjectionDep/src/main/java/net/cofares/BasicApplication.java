@@ -9,7 +9,18 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 
-
+/**
+ * Many Spring Boot developers like their apps to use 
+ * auto-configuration, component scan and be able to define extra configuration 
+ * on their "application class". 
+ * A single @SpringBootApplication annotation can be used 
+ * to enable those three features, that is:
+ *   @EnableAutoConfiguration: enable Spring Boot’s auto-configuration mechanism
+ *   @ComponentScan: enable @Component scan on the package where the application is located (see the best practices)
+ *   @Configuration: allow to register extra beans in the context or import additional configuration classes
+ * 
+ * @author Pascal Fares <pascal.fares at cofares.net>
+ */
 
 @SpringBootApplication
 public class BasicApplication {
@@ -33,7 +44,7 @@ public class BasicApplication {
     }
     
     @Bean
-    @Order(1)
+    @Order(2)
     public ApplicationRunner exempleAfficherLecontexte(ApplicationContext ctx) {
 		return args -> {
 			System.out.println("# Beans: " + ctx.getBeanDefinitionCount());
@@ -45,7 +56,7 @@ public class BasicApplication {
 	}
     
     @Bean
-    @Order(2)
+    @Order(1)
     public ApplicationRunner exempleDinjection(MyApp app) {
 		return args -> {
 	           System.out.printf("---On essaye---\n");
